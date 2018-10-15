@@ -1,0 +1,60 @@
+{
+  "name": "Devices",
+  "plural": "Devices",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "id": {
+      "type": "string",
+      "id": true,
+      "defaultFn": "uuid"
+    },
+    "user_id": {
+      "type": "string",
+      "required": true
+    },
+    "publickey": {
+      "type": "string",
+      "required": true
+    },
+    "name": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "user": {
+      "type": "belongsTo",
+      "model": "User",
+      "foreignKey": "user_id"
+    },
+    "subscriptions": {
+      "type": "hasMany",
+      "model": "Subscription",
+      "foreignKey": "deviceId"
+    },
+    "answer": {
+      "type": "hasMany",
+      "model": "Answer",
+      "foreignKey": "deviceId"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$unauthenticated",
+      "permission": "DENY"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}

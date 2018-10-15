@@ -1,0 +1,26 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "sqlite": {
+    "host": "localhost",
+    "port": 27017,
+    "url": "mongodb://@localhost:27017/notisync",
+    "database": "notisync",
+    "password": "",
+    "name": "sqlite",
+    "user": "",
+    "connector": "mongodb"
+  },
+  "mongo": {
+    "host": "localhost",
+    "port": 27017,
+    "url": "",
+    "database": "notisync",
+    "password": "",
+    "name": "mongo",
+    "user": "",
+    "connector": "mongodb"
+  }
+}

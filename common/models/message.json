@@ -1,0 +1,75 @@
+{
+  "name": "Message",
+  "plural": "Messages",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "id": {
+      "type": "string",
+      "id": true,
+      "defaultFn": "uuid"
+    },
+    "serviceId": {
+      "type": "string"
+    },
+    "message": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "custom_icon": {
+      "type": "string"
+    }
+    
+  },
+  "validations": [],
+  "relations": {
+    "answer": {
+      "type": "hasMany",
+      "model": "Answer",
+      "foreignKey": "messageId"
+    },
+    "subscriptions": {
+      "type": "hasMany",
+      "model": "subscription",
+      "through": "SubscriptionMessage",
+      "foreignKey": "messageId"
+
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$unauthenticated",
+      "permission": "DENY"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$unauthenticated",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": [
+        "read"
+      ]
+    }
+  ],
+  "methods": {}
+}
