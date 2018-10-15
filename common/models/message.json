@@ -25,7 +25,6 @@
     "custom_icon": {
       "type": "string"
     }
-    
   },
   "validations": [],
   "relations": {
@@ -36,10 +35,9 @@
     },
     "subscriptions": {
       "type": "hasMany",
-      "model": "subscription",
-      "through": "SubscriptionMessage",
-      "foreignKey": "messageId"
-
+      "model": "Subscription",
+      "foreignKey": "messageId",
+      "through": "SubscriptionMessage"
     }
   },
   "acls": [
@@ -48,28 +46,11 @@
       "principalType": "ROLE",
       "principalId": "$unauthenticated",
       "permission": "DENY"
-    },
-    {
-      "accessType": "*",
-      "principalType": "ROLE",
-      "principalId": "$authenticated",
-      "permission": "ALLOW"
-    },
-    {
-      "accessType": "*",
-      "principalType": "ROLE",
-      "principalId": "$unauthenticated",
-      "permission": "ALLOW"
-    },
-    {
-      "accessType": "READ",
-      "principalType": "ROLE",
-      "principalId": "$everyone",
-      "permission": "ALLOW",
-      "property": [
-        "read"
-      ]
     }
   ],
-  "methods": {}
+  "methods": {},
+  "mixins": {
+    "MessageSubscription": true,
+    "TimeStamp": true
+  }
 }

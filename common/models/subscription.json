@@ -6,6 +6,9 @@
   "options": {
     "validateUpsert": true
   },
+  "mixins": {
+    "TimeStamp": true
+  },
   "properties": {
     "id": {
       "type": "string",
@@ -24,12 +27,13 @@
     "messages": {
       "type": "hasMany",
       "model": "Message",
+      "foreignKey": "subscriptionId",
       "through": "SubscriptionMessage",
-      "foreignKey": "subscriptionId"
+      "keyThrough": "messageId"
     },
     "device": {
       "type": "belongsTo",
-      "model": "Device",
+      "model": "Devices",
       "foreignKey": "deviceId"
     }
   },
@@ -39,18 +43,6 @@
       "principalType": "ROLE",
       "principalId": "$unauthenticated",
       "permission": "DENY"
-    },
-    {
-      "accessType": "*",
-      "principalType": "ROLE",
-      "principalId": "$authenticated",
-      "permission": "ALLOW"
-    },
-    {
-      "accessType": "*",
-      "principalType": "ROLE",
-      "principalId": "$unauthenticated",
-      "permission": "ALLOW"
     }
   ],
   "methods": {}

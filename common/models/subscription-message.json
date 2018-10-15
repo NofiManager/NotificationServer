@@ -6,6 +6,11 @@
     "validateUpsert": true
   },
   "properties": {
+    "id": {
+      "type": "string",
+      "id": true,
+      "defaultFn": "uuid"
+    },
     "messageId": {
       "type": "string",
       "required": true
@@ -13,26 +18,28 @@
     "subscriptionId": {
       "type": "string",
       "required": true
-    },
-    "read": {
-      "type": "boolean",
-      "default": false
     }
   },
   "validations": [],
   "relations": {
-    "subscriptions": {
+    "subscription": {
       "type": "belongsTo",
       "model": "Subscription",
       "foreignKey": "subscriptionId"
     },
-    "messages": {
+    "message": {
       "type": "belongsTo",
       "model": "Message",
       "foreignKey": "messageId"
     }
   },
-
-  "acls": [],
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$unauthenticated",
+      "permission": "DENY"
+    }
+  ],
   "methods": {}
 }

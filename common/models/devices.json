@@ -12,9 +12,8 @@
       "id": true,
       "defaultFn": "uuid"
     },
-    "user_id": {
-      "type": "string",
-      "required": true
+    "ownerId": {
+      "type": "string"
     },
     "publickey": {
       "type": "string",
@@ -29,12 +28,15 @@
     "user": {
       "type": "belongsTo",
       "model": "User",
-      "foreignKey": "user_id"
+      "foreignKey": "ownerId"
     },
     "subscriptions": {
       "type": "hasMany",
       "model": "Subscription",
       "foreignKey": "deviceId"
+    },
+    "mixins": {
+      "TimeStamp": true
     },
     "answer": {
       "type": "hasMany",
@@ -52,7 +54,7 @@
     {
       "accessType": "*",
       "principalType": "ROLE",
-      "principalId": "$authenticated",
+      "principalId": "$owner",
       "permission": "ALLOW"
     }
   ],

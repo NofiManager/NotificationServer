@@ -6,11 +6,17 @@
   "options": {
     "validateUpsert": true
   },
+  "mixins": {
+    "TimeStamp": true
+  },
   "properties": {
     "id": {
       "type": "string",
       "id": true,
       "defaultFn": "uuid"
+    },
+    "ownerId": {
+      "type": "string"
     },
     "name": {
       "type": "string",
@@ -29,6 +35,11 @@
   },
   "validations": [],
   "relations": {
+    "user": {
+      "type": "belongsTo",
+      "model": "User",
+      "foreignKey": "ownerId"
+    },
     "messages": {
       "type": "hasMany",
       "model": "Message",
@@ -48,7 +59,7 @@
       "permission": "DENY"
     },
     {
-      "accessType": "*",
+      "accessType": "READ",
       "principalType": "ROLE",
       "principalId": "$authenticated",
       "permission": "ALLOW"
@@ -56,7 +67,7 @@
     {
       "accessType": "*",
       "principalType": "ROLE",
-      "principalId": "$unauthenticated",
+      "principalId": "$owner",
       "permission": "ALLOW"
     }
   ],

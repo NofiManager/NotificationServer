@@ -22,6 +22,9 @@ module.exports = function(Device) {
         else
             model.disableRemoteMethodByName(methodName, false); 
     }
+
+
+   
     //Device.on('attached', function() {
         //Device.
     //});

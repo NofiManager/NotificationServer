@@ -27,3 +27,12 @@ module.exports = function(Message) {
 
 
 //fertig disabled
+/* "subscriptions": {
+      "type": "hasMany",
+      "model": "Subscription",
+      "foreignKey": "messageId",
+      "through": "SubscriptionMessage",
+      "keyThrough": "subscriptionId"
+    },
+
+    */
