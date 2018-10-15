@@ -51,7 +51,7 @@
   },
   "Subscription": {
     "dataSource": "mongo",
-    "public": true
+    "public": false
   },
   "Action": {
     "dataSource": "mongo",
@@ -59,7 +59,7 @@
   },
   "Message": {
     "dataSource": "mongo",
-    "public": true
+    "public": false
   },
   "Answer": {
     "dataSource": "mongo",

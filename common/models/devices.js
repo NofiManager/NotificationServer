@@ -2,10 +2,13 @@
 
 module.exports = function(Device) {
 
-    var methodNames = ['upsert', 'deleteById','updateAll',
+    var methodNames = ['upsert', 'deleteById','updateAll','get',
     'updateAttributes','createChangeStream','replace','replaceById',
     'upsertWithWhere','replaceOrCreate', 'count', 'findOne', 'exists',
-    'prototype.__count__answer','prototype.__count__subscriptions'
+    'prototype.__count__answer','prototype.__count__subscriptions',
+    'prototype.__delete__answer','prototype.__delete__subscriptions',
+    'prototype.__findById__answer','prototype.__findById__subscriptions',
+    'prototype.__updateById__answer','prototype.__updateById__subscriptions',
     ];
 
     methodNames.forEach(function(methodName) {

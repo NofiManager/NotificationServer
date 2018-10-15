@@ -27,5 +27,27 @@ boot(app, __dirname, function(err) {
   if (require.main === module)
     app.start();
 
-    app.models.Devices.nestRemoting('subscriptions'); 
+    app.models.Devices.nestRemoting('subscriptions');
+    app.models.Service.nestRemoting('messages');
+
+    var User = app.models.User;
+
+    var methodNames = ['upsert','updateAll',
+    'updateAttributes','createChangeStream','replace','replaceById',
+    'upsertWithWhere','replaceOrCreate', 'count', 'findOne', 'exists',
+    'prototype.__count__accessTokens','prototype.__updateById__accessTokens',
+    'prototype.__get__accessTokens'
+    ];
+
+    methodNames.forEach(function(methodName) {
+        disableMethods(User,methodName)
+    });
+
+    function disableMethods(model,methodName)
+    {
+        if(methodName!='updateAttributes')
+            model.disableRemoteMethodByName(methodName, true);
+        else
+            model.disableRemoteMethodByName(methodName, false); 
+    }
 });

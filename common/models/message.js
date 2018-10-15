@@ -5,10 +5,9 @@ module.exports = function(Message) {
     var methodNames = ['upsert', 'deleteById','updateAll',
     'updateAttributes','createChangeStream','replace','replaceById',
     'upsertWithWhere','replaceOrCreate', 'count', 'findOne', 'exists',
-    'prototype.__count__answer','prototype.__create__answer',
     'prototype.__delete__answer','prototype.__updateById__answer',
-    'prototype.__get__answer','prototype.__findById__answer', 'find',
-    'create','prototype.patchAttributes','prototype.__destroyById__answer'
+    ,'prototype.__findById__answer', 'find',
+    'create','prototype.patchAttributes','prototype.__count__answer'
     ];
 
     methodNames.forEach(function(methodName) {
