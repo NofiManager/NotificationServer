@@ -35,14 +35,14 @@
       "model": "Subscription",
       "foreignKey": "deviceId"
     },
-    "mixins": {
-      "TimeStamp": true
-    },
     "answer": {
       "type": "hasMany",
       "model": "Answer",
       "foreignKey": "deviceId"
     }
+  },
+  "mixins": {
+    "TimeStamp": true
   },
   "acls": [
     {
